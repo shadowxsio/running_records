@@ -37,35 +37,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Process runs for PRs
     function calculatePRs(runs) {
-        const prs = {};
+        // Define fixed distances
+        const prs = {
+            "5 km": { distance: "5 km", time: "--:--", pace: "--" },
+            "10 km": { distance: "10 km", time: "--:--", pace: "--" },
+            "Semi-Marathon": { distance: "Semi-Marathon", time: "--:--", pace: "--" },
+            "Marathon": { distance: "Marathon", time: "--:--", pace: "--" }
+        };
         
         runs.forEach(run => {
-            // Group distances roughly (e.g. 21.1 km -> Semi, 42.2 km -> Marathon, 5.0 km -> 5k)
-            let distanceCategory = run.distance;
             const distNum = parseFloat(run.distance);
+            let distanceCategory = null;
             
             if (Math.abs(distNum - 42.2) < 1) distanceCategory = "Marathon";
             else if (Math.abs(distNum - 21.1) < 1) distanceCategory = "Semi-Marathon";
             else if (Math.abs(distNum - 10) < 0.5) distanceCategory = "10 km";
             else if (Math.abs(distNum - 5) < 0.5) distanceCategory = "5 km";
-            else distanceCategory = `${distNum} km`; // Custom distances for trails
 
-            const currentSeconds = timeToSeconds(run.time);
-            
-            if (!prs[distanceCategory] || currentSeconds < timeToSeconds(prs[distanceCategory].time)) {
-                prs[distanceCategory] = {
-                    distance: distanceCategory,
-                    time: run.time,
-                    pace: calculatePace(run.time, run.distance)
-                };
+            if (distanceCategory) {
+                const currentSeconds = timeToSeconds(run.time);
+                if (prs[distanceCategory].time === "--:--" || currentSeconds < timeToSeconds(prs[distanceCategory].time)) {
+                    prs[distanceCategory] = {
+                        distance: distanceCategory,
+                        time: run.time,
+                        pace: calculatePace(run.time, run.distance)
+                    };
+                }
             }
         });
         
-        return Object.values(prs).sort((a, b) => {
-            // Sort standard distances first if possible
-            const order = {"5 km": 1, "10 km": 2, "Semi-Marathon": 3, "Marathon": 4};
-            return (order[a.distance] || 99) - (order[b.distance] || 99);
-        });
+        return [prs["5 km"], prs["10 km"], prs["Semi-Marathon"], prs["Marathon"]];
     }
 
     // Fetch the runs data
