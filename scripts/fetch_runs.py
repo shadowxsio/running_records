@@ -88,14 +88,31 @@ def main():
     # 2. Load manual runs
     manual_runs = load_manual_runs()
     
-    # 3. Merge and deduplicate
-    all_runs = manual_runs + sportstats_runs
-    
+    # 3. Merge intelligently
     unique_runs = {}
-    for run in all_runs:
+    
+    # D'abord on ajoute les courses de Sportstats
+    for run in sportstats_runs:
         key = f"{run['date']}_{run['event_name']}"
         unique_runs[key] = run
         
+    # Ensuite on ajoute ou fusionne les courses manuelles
+    for run in manual_runs:
+        key = f"{run['date']}_{run['event_name']}"
+        if key in unique_runs:
+            # Si la course existe déjà (ex: récupérée sur Sportstats),
+            # on met à jour les champs personnalisés (ex: elevation)
+            for k, v in run.items():
+                if v is not None and v != "":
+                    # On évite d'écraser la source avec "Manuel" si c'est Sportstats, 
+                    # mais on le fait si on le veut vraiment. 
+                    # Pour l'instant on écrase tout, sauf si c'est source:Manuel qui remplacerait Sportstats
+                    if k == "source" and unique_runs[key]["source"] == "Sportstats":
+                        continue
+                    unique_runs[key][k] = v
+        else:
+            unique_runs[key] = run
+            
     final_runs = list(unique_runs.values())
     
     # Sort by date descending
@@ -111,7 +128,8 @@ def main():
     # Print for the user to see
     print("\n--- Aperçu des données récupérées ---")
     for r in final_runs:
-        print(f"- {r['date']} : {r['event_name']} ({r['distance']} en {r['time']}) [Source: {r['source']}]")
+        elevation = f" [⛰️ {r['elevation']}]" if 'elevation' in r else ""
+        print(f"- {r['date']} : {r['event_name']} ({r['distance']} en {r['time']}){elevation} [Source: {r['source']}]")
 
 if __name__ == "__main__":
     main()
