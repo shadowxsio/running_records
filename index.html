@@ -24,7 +24,7 @@
     <div class="blob blob-3"></div>
 
     <div class="container">
-        <header class="liquid-panel main-header">
+        <header class="main-header">
             <div class="profile-info">
         <h1 class="hero-title">Mickaël Gauvrit</h1>
         <p class="hero-subtitle bio-text">
@@ -50,14 +50,14 @@
       </div>
             
             <nav class="tabs-nav">
-                <button class="tab-btn active" data-target="prs-section">🏆 Mes Records</button>
-                <button class="tab-btn" data-target="runs-section">🏁 Historique</button>
+                <button class="tab-btn" data-target="prs-section">🏆 Mes Records</button>
+                <button class="tab-btn active" data-target="history-section">📅 Historique</button>
             </nav>
         </header>
 
         <main class="content-area">
             <!-- Section PRs -->
-            <section id="prs-section" class="tab-content active">
+            <section id="prs-section" class="tab-content">
                 <div class="pr-grid" id="pr-container">
                     <!-- PR cards will be injected here -->
                     <div class="loading">Calcul des records...</div>
@@ -65,7 +65,7 @@
             </section>
 
             <!-- Section Historique -->
-            <section id="runs-section" class="tab-content">
+            <section id="history-section" class="tab-content active">
                 <div class="filter-container">
                     <label for="year-filter">Année :</label>
                     <select id="year-filter">

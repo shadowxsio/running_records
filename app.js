@@ -91,6 +91,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            // Populate upcoming races in the bio
+            const raceMenu = document.querySelector('.race-menu');
+            if (raceMenu) {
+                const now = new Date();
+                // Strip time for accurate date comparison
+                now.setHours(0,0,0,0);
+                
+                const upcomingRuns = runs
+                    .filter(run => {
+                        const runDate = new Date(run.date);
+                        runDate.setHours(0,0,0,0);
+                        return runDate > now;
+                    })
+                    .sort((a, b) => new Date(a.date) - new Date(b.date));
+                
+                if (upcomingRuns.length > 0) {
+                    const upcomingHtml = upcomingRuns.map(run => {
+                        return `🏁 ${run.event_name} ${run.distance}`;
+                    }).join(' &bull; ');
+                    raceMenu.innerHTML = upcomingHtml;
+                } else {
+                    raceMenu.innerHTML = 'Entraînement en cours... 🏃‍♂️';
+                }
+            }
+
             // Render PRs
             const prs = calculatePRs(runs);
             prs.forEach(pr => {
