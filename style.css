@@ -4,11 +4,11 @@
   --color-text: #ffffff;
   --color-text-muted: #a1a1aa;
   
-  /* Liquid Glass variables - Darkened for better contrast */
-  --glass-bg: rgba(10, 5, 20, 0.65);
+  /* Liquid Glass variables - Lighter frosted glass */
+  --glass-bg: rgba(255, 255, 255, 0.06);
   --glass-border: rgba(255, 255, 255, 0.12);
-  --glass-highlight: rgba(255, 255, 255, 0.08);
-  --glass-shadow: rgba(0, 0, 0, 0.6);
+  --glass-highlight: rgba(255, 255, 255, 0.15);
+  --glass-shadow: rgba(0, 0, 0, 0.4);
   
   --color-accent: #f97316; /* Fiery Orange */
   --color-strava: #fc4c02;
@@ -134,7 +134,7 @@ h1 {
   display: flex;
   gap: 1rem;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.05);
   padding: 0.5rem;
   border-radius: 16px;
   border: 1px solid var(--glass-border);
@@ -229,19 +229,20 @@ h1 {
 
 .pr-card {
   background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
   border-radius: 20px;
   padding: 1.5rem;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: inset 0 1px 0 var(--glass-highlight);
 }
 
 .pr-card:hover {
-  transform: translateY(-5px);
-  background: rgba(10, 5, 20, 0.85);
-  border-color: rgba(249, 115, 22, 0.6);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(249, 115, 22, 0.25), inset 0 1px 0 var(--glass-highlight);
+  transform: scale(1.01);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .pr-distance {
@@ -287,8 +288,8 @@ h1 {
 
 .run-card:hover {
   transform: scale(1.01);
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 /* Year Divider */
