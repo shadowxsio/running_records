@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Records de Course</title>
+    <!-- MANDATORY: Declare support for both light and dark themes -->
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="Records personnels de course à pied">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="profile-header">
+            <!-- Placeholder for profile image -->
+            <div class="profile-image"></div>
+            <h1>Mickael</h1>
+            <p class="bio">Runner passionné | 📍 France</p>
+            
+            <div class="social-links">
+                <a href="#" class="btn-social">Strava</a>
+                <a href="#" class="btn-social">Instagram</a>
+            </div>
+        </header>
+
+        <main>
+            <section class="records-section">
+                <h2>🏆 Mes Records</h2>
+                <div id="runs-container" class="runs-grid">
+                    <!-- Runs will be injected here by app.js -->
+                    <div class="loading">Chargement des courses...</div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Mis à jour automatiquement ⚡️</p>
+        </footer>
+    </div>
+
+    <!-- JS -->
+    <script src="app.js" defer></script>
+</body>
+</html>
