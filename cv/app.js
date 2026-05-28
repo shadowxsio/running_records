@@ -67,14 +67,6 @@ function setupEventListeners() {
       }
     });
   }
-
-  // Bouton de téléchargement / impression PDF
-  const printBtn = document.getElementById('print-btn');
-  if (printBtn) {
-    printBtn.addEventListener('click', () => {
-      window.print();
-    });
-  }
 }
 
 /**
@@ -137,6 +129,12 @@ function renderCV(lang) {
   
   // 1. Traduction des éléments d'interface statiques
   translateStaticUI(lang);
+
+  // Mettre à jour dynamiquement le lien de téléchargement PDF selon la langue active
+  const printBtn = document.getElementById('print-btn');
+  if (printBtn) {
+    printBtn.href = lang === 'fr' ? 'cv_fr.pdf' : 'cv_en.pdf';
+  }
 
   // 2. Rendu du profil
   renderProfile(cvData.profile, lang);
@@ -222,26 +220,14 @@ function renderSkills(skills, lang) {
   if (!skills) return;
 
   skills.forEach(skillGroup => {
-    const categoryDiv = document.createElement('div');
-    categoryDiv.className = 'skill-category';
-
-    const title = document.createElement('h3');
-    title.className = 'skill-category-title';
-    title.textContent = getLocVal(skillGroup.category, lang);
-    categoryDiv.appendChild(title);
-
-    const listDiv = document.createElement('div');
-    listDiv.className = 'skills-list';
-
-    skillGroup.items.forEach(skillName => {
-      const tag = document.createElement('span');
-      tag.className = 'skill-tag';
-      tag.textContent = getLocVal(skillName, lang);
-      listDiv.appendChild(tag);
-    });
-
-    categoryDiv.appendChild(listDiv);
-    container.appendChild(categoryDiv);
+    const p = document.createElement('p');
+    p.className = 'skill-row';
+    
+    const categoryName = getLocVal(skillGroup.category, lang);
+    const itemsList = skillGroup.items.map(item => getLocVal(item, lang)).join(', ');
+    
+    p.innerHTML = `<strong>${categoryName} :</strong> ${itemsList}`;
+    container.appendChild(p);
   });
 }
 

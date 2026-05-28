@@ -287,50 +287,30 @@ body::before {
 }
 
 /* ==========================================================================
-   SKILLS COMPONENT
+/* ==========================================================================
+   SKILLS COMPONENT (ATS OPTIMIZED PLAIN TEXT LISTS)
    ========================================================================== */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.8rem 2rem;
+  margin-bottom: 0.5rem;
 }
 
-.skill-category {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.skill-category-title {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--color-text-primary);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-.skills-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 0.5rem;
-}
-
-.skill-tag {
-  font-size: 0.8rem;
-  font-weight: 500;
-  padding: 0.3rem 0.6rem;
-  background: rgba(var(--color-accent-rgb), 0.05);
-  border: 1px solid rgba(var(--color-accent-rgb), 0.15);
-  border-radius: 6px;
+.skill-row {
+  font-size: 0.92rem;
   color: var(--color-text-secondary);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  line-height: 1.5;
 }
 
-.skill-tag:hover {
-  color: var(--color-text-primary);
-  background: rgba(var(--color-accent-rgb), 0.15);
-  border-color: var(--color-accent);
-  transform: translateY(-1px);
+.skill-row strong {
+  font-family: var(--font-title);
+  color: var(--color-accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+  margin-right: 0.4rem;
 }
 
 /* ==========================================================================
@@ -793,33 +773,23 @@ body::before {
     line-height: 1.35 !important;
   }
 
-  /* Skills print overrides - 2 columns to save space while keeping full-width tags */
+  /* Skills print overrides - 2 columns of clean text rows to save space and remain fully ATS-readable */
   .skills-grid {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    gap: 8pt 15pt !important;
-  }
-  
-  .skill-category {
-    gap: 2pt !important;
+    gap: 5pt 20pt !important;
+    margin-bottom: 2pt !important;
   }
 
-  .skill-category-title {
-    font-size: 7.5pt !important;
-    color: #111111 !important;
+  .skill-row {
+    font-size: 7.8pt !important;
+    color: #222222 !important;
+    line-height: 1.35 !important;
   }
 
-  .skills-list {
-    gap: 2pt 3pt !important;
-  }
-
-  .skill-tag {
-    font-size: 7.2pt !important;
-    padding: 1.5pt 3.5pt !important;
-    background: #f4f4f5 !important;
-    border: 1px solid #d4d4d8 !important;
-    color: #27272a !important;
-    border-radius: 3px !important;
+  .skill-row strong {
+    color: #000000 !important;
+    font-size: 7.8pt !important;
   }
 
   /* Timeline print overrides - Remove vertical line to keep it clean and save space */
