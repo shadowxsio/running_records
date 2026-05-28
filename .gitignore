@@ -1,0 +1,12 @@
+# Local PDF files (GHA generates these automatically during deployment)
+cv/cv_fr.pdf
+cv/cv_en.pdf
+
+# Word source files
+*.docx
+
+# Temporary/Scratch folders
+scratch/
+.system_generated/
+.gemini/
+.DS_Store

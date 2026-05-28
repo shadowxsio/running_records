@@ -745,9 +745,11 @@ body::before {
   }
 
   .cv-footer-grid {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 14pt !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 15pt !important;
+    margin-top: 10pt !important;
+    break-inside: avoid !important;
   }
 
   .cv-section {
@@ -811,6 +813,8 @@ body::before {
     break-inside: avoid !important;
     page-break-inside: avoid !important;
   }
+
+
 
   .job-header {
     margin-bottom: 1pt !important;

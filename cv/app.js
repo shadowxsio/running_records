@@ -40,13 +40,19 @@ document.addEventListener('DOMContentLoaded', () => {
  * Initialise la langue selon le localStorage ou les préférences du navigateur
  */
 function initLanguage() {
-  const savedLang = localStorage.getItem('cv_lang');
-  if (savedLang === 'fr' || savedLang === 'en') {
-    currentLanguage = savedLang;
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlLang = urlParams.get('lang');
+  if (urlLang === 'fr' || urlLang === 'en') {
+    currentLanguage = urlLang;
   } else {
-    // Détection de la langue du navigateur
-    const browserLang = navigator.language || navigator.userLanguage;
-    currentLanguage = browserLang.startsWith('fr') ? 'fr' : 'en';
+    const savedLang = localStorage.getItem('cv_lang');
+    if (savedLang === 'fr' || savedLang === 'en') {
+      currentLanguage = savedLang;
+    } else {
+      // Détection de la langue du navigateur
+      const browserLang = navigator.language || navigator.userLanguage;
+      currentLanguage = browserLang.startsWith('fr') ? 'fr' : 'en';
+    }
   }
   updateLangButtonUI();
 }

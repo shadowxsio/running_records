@@ -40,6 +40,14 @@ jobs:
       - name: Translate CV to Bilingual JSON
         run: |
           python3 scripts/translate_cv.py
+      - name: Generate PDF Resumes (French and English)
+        run: |
+          python3 -m http.server 8000 &
+          SERVER_PID=$!
+          sleep 3
+          google-chrome --headless --no-sandbox --disable-gpu --no-pdf-header-footer --print-to-pdf=cv/cv_fr.pdf "http://localhost:8000/cv/index.html?lang=fr"
+          google-chrome --headless --no-sandbox --disable-gpu --no-pdf-header-footer --print-to-pdf=cv/cv_en.pdf "http://localhost:8000/cv/index.html?lang=en"
+          kill $SERVER_PID
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
