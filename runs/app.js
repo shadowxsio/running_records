@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return [prs["5 km"], prs["10 km"], prs["Semi-Marathon"], prs["Marathon"]];
     }
 
-    fetch('data/runs.json')
+    fetch('../data/runs.json')
         .then(response => {
             if (!response.ok) throw new Error('Données introuvables');
             return response.json();

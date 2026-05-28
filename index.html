@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="fr-CA">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes courses - Mickaël Gauvrit</title>
-    <!-- MANDATORY: Declare support for both light and dark themes -->
-    <meta name="color-scheme" content="light dark">
-    <meta name="description" content="Courses et records personnels de Mickaël Gauvrit">
+    <title>Mickaël Gauvrit - Espace Personnel</title>
     
-    <!-- Google Fonts & Icons -->
+    <!-- Support pour thèmes clair/sombre -->
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="Portail personnel de Mickaël Gauvrit - Cloud Engineer GCP & Coureur de sentiers">
+    
+    <!-- Google Fonts & FontAwesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- CSS -->
+    <!-- CSS Portal -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,69 +24,66 @@
     <div class="blob blob-2"></div>
     <div class="blob blob-3"></div>
 
-    <div class="container">
-        <header class="main-header">
-            <div class="profile-info">
-        <img src="images/profile.jpg" alt="Mickaël Gauvrit" class="profile-avatar">
-        <h1 class="hero-title">Mickaël Gauvrit</h1>
-        <p class="hero-subtitle bio-text glass-panel">
-          📍 Montréal, Canada<br>
-          🏃‍♂️ Coureur de sentiers carburant à la bière et à l'endorphine !<br>
-          🎥 Cinéaste à mes heures perdues<br><br>
-          🎯 <strong>En ligne de mire : MIUT 2028</strong><br>
-          📅 <strong>Menu de l'année :</strong><br>
-          <span class="race-menu">🌲 Gaspesia 35km &bull; 🐻 Borealys 14km &bull; 🏔️ Whistler 25km &bull; 🐺 UTHC 42km</span>
-        </p>
-        
-        <div class="social-links">
-          <a href="https://www.strava.com/athletes/mickael_gauvrit" target="_blank" rel="noopener noreferrer" class="social-btn strava" title="Strava">
-            <i class="fa-brands fa-strava"></i>
-          </a>
-          <a href="https://www.instagram.com/shadow.xsio/" target="_blank" rel="noopener noreferrer" class="social-btn instagram" title="Instagram">
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-          <a href="https://youtube.com/@shadowxsio?si=rd7ky_QG4FFqR8vO" target="_blank" rel="noopener noreferrer" class="social-btn youtube" title="YouTube">
-            <i class="fa-brands fa-youtube"></i>
-          </a>
-        </div>
-      </div>
+    <div class="portal-container">
+        <!-- Main glass card -->
+        <main class="portal-card glass-panel">
             
-            <nav class="tabs-nav">
-                <button class="tab-btn" data-target="prs-section">🏆 Mes Records</button>
-                <button class="tab-btn active" data-target="history-section">📅 Historique</button>
-            </nav>
-        </header>
+            <header class="profile-header">
+                <div class="avatar-container">
+                    <img src="images/profile.jpg" alt="Mickaël Gauvrit" class="portal-avatar">
+                </div>
+                <h1 class="portal-title">Mickaël Gauvrit</h1>
+                <p class="portal-tagline">Cloud Engineer GCP &bull; DevOps &bull; SRE</p>
+                <p class="portal-location"><i class="fa-solid fa-location-dot"></i> Montréal, Canada</p>
+            </header>
+            
+            <!-- Elegant dashboard buttons -->
+            <section class="portal-links">
+                <a href="cv/" class="portal-btn cv-btn">
+                    <div class="btn-icon-wrapper">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <div class="btn-text-wrapper">
+                        <span class="btn-title">Mon CV Professionnel</span>
+                        <span class="btn-desc">GCP, DevOps, SRE &bull; Bilingue FR / EN</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right arrow-icon"></i>
+                </a>
 
-        <main class="content-area">
-            <!-- Section PRs -->
-            <section id="prs-section" class="tab-content">
-                <div class="pr-grid" id="pr-container">
-                    <!-- PR cards will be injected here -->
-                    <div class="loading">Calcul des records...</div>
-                </div>
+                <a href="runs/" class="portal-btn runs-btn">
+                    <div class="btn-icon-wrapper">
+                        <i class="fa-solid fa-person-running"></i>
+                    </div>
+                    <div class="btn-text-wrapper">
+                        <span class="btn-title">Mes Courses & Records</span>
+                        <span class="btn-desc">Suivi trail, statistiques & synchronisation Strava</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right arrow-icon"></i>
+                </a>
             </section>
-
-            <!-- Section Historique -->
-            <section id="history-section" class="tab-content active">
-                <div class="filter-container">
-                    <label for="year-filter">Année :</label>
-                    <select id="year-filter">
-                        <option value="all">Toutes</option>
-                        <!-- Options generated by JS -->
-                    </select>
+            
+            <!-- Social networks section -->
+            <footer class="portal-footer">
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/micka%C3%ABl-gauvrit" target="_blank" rel="noopener noreferrer" class="social-btn linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/shadowxsio" target="_blank" rel="noopener noreferrer" class="social-btn github" title="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://www.strava.com/athletes/mickael_gauvrit" target="_blank" rel="noopener noreferrer" class="social-btn strava" title="Strava">
+                        <i class="fa-brands fa-strava"></i>
+                    </a>
+                    <a href="https://www.instagram.com/shadow.xsio/" target="_blank" rel="noopener noreferrer" class="social-btn instagram" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://youtube.com/@shadowxsio?si=rd7ky_QG4FFqR8vO" target="_blank" rel="noopener noreferrer" class="social-btn youtube" title="YouTube">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
                 </div>
-                <div id="runs-container" class="runs-list">
-                    <!-- Runs will be injected here -->
-                    <div class="loading">Chargement de l'historique...</div>
-                </div>
-            </section>
+            </footer>
+            
         </main>
-        
-        <footer class="footer">
-    <p>Créé par Mickaël Gauvrit</p>
-  </footer>
     </div>
-    
-    <script src="app.js"></script>
 </body>
 </html>
